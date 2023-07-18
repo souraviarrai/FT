@@ -14,11 +14,12 @@
     </div>
   <% end %>
 </div>
-<%= turbo_frame_tag id='results' %>
 
+<%= render 'users/result' %>
 
-<% if !@tracked_stocks.empty? %>
+<% if @tracked_stocks.present? %>
   <%= render 'stocks/list' %>
 <% end %>
+
 
 
