@@ -5,9 +5,19 @@ class UserStocksController < ApplicationController
       stock = Stock.new_lookup(params[:ticker])
       stock.save
     end
-    @user_stock = UserStock.create(user: current_user, stock: stock)
-    flash[:notice] = "Stock #{stock.name} was added successfully"
-    redirect_to my_portfolio_path
+
+    user_stock = UserStock.check_user_stock_db(current_user.id,stock.id)
+    if user_stock.blank?
+      @user_stock = UserStock.create(user_id: current_user.id, stock_id: stock.id)
+      flash[:notice] = "Stock #{stock.name} was added successfully"
+      redirect_to my_portfolio_path
+      PostMailer.with(user:current_user,post:stock.name).post_created.deliver_later
+    else
+      flash[:notice] = "Stock #{stock.name} was already added"
+      redirect_to my_portfolio_path
+    end
+
+
   end
 
   def destroy

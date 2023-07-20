@@ -34,7 +34,6 @@ gem 'devise'
 
 gem 'pry'
 
-gem 'turbo-rails'
 
 
 gem 'devise-bootstrap-views', '~> 1.0'
