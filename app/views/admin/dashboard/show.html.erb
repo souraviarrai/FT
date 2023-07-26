@@ -1,0 +1,9 @@
+<h1><%= @stock.ticker %></h1>
+<p><%= @stock.name %></p>
+<%= link_to "Edit", edit_admin_dashboard_path(@stock) %>
+<%= button_to "Delete", admin_dashboard_path(@stock), method: :delete, data: {
+  turbo_method: :delete,
+  turbo_confirm: "Are you sure?"
+} %>
+
+

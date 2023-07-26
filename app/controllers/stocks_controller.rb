@@ -1,7 +1,10 @@
 class StocksController < ApplicationController
+
   def search
     if params[:stock].present?
-      @stock = Stock.new_lookup(params[:stock])
+      # binding.pry
+      # @stock = Stock.new_lookup(params[:stock])
+      @stock = Stock.check_db(params[:stock])
       if @stock
         render 'users/my_portfolio'
       else

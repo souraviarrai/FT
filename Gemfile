@@ -34,6 +34,8 @@ gem 'devise'
 
 gem 'pry'
 
+gem 'carrierwave'
+gem 'bootstrap-sass'
 
 
 gem 'devise-bootstrap-views', '~> 1.0'

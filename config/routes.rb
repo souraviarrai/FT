@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :folders
   resources :user_stocks, only: [:create,:destroy]
   devise_for :users
   namespace :admin do
